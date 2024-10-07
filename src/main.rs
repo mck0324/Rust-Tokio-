@@ -46,7 +46,9 @@ async fn sleeper(name: &str) {
 }
 
 async fn run() {
-    sleeper("first").await;
+    tokio::spawn(async {
+        sleeper("first").await;
+    });
     sleeper("second").await;
 }
 
