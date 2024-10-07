@@ -18,8 +18,10 @@ async fn reader() {
 }
 
 async fn run() {
-    sleeper().await;
-    reader().await;
+    tokio::join!(
+        sleeper(),
+        reader(),
+    );
 }
 fn main() {
     simple_logger::init_with_level(Level::Info).unwrap();
